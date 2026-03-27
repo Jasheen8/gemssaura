@@ -1,460 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GemssAura | Necklaces</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemssAura | Necklaces</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#faf9f6;
+  color:#222;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  font-style:italic;
+  color:#c6a65b;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:30px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#222;
+  position:relative;
+  font-weight:500;
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-5px;
+  left:0;
+  background:#c6a65b;
+  transition:0.4s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:52px;
+  font-style:italic;
+}
+
+.hero p{
+  margin:15px 0;
+  font-size:18px;
+}
+
+.btn{
+  padding:12px 30px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* SECTION */
+section{
+  padding:100px 60px;
+}
+
+.title{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin-bottom:50px;
+}
+
+/* PRODUCTS GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.4s;
+  position:relative;
+}
+
+.product img{
+  width:100%;
+  transition:0.4s;
+}
+
+.product:hover img{
+  transform:scale(1.1);
+}
+
+.product:hover{
+  box-shadow:0 15px 30px rgba(198,166,91,0.3);
+}
+
+.product-info{
+  padding:15px;
+}
+
+.product h3{
+  font-size:18px;
+}
+
+.price{
+  color:#c6a65b;
+  font-weight:bold;
+  margin:5px 0;
+}
+
+.card-btn{
+  margin-top:10px;
+  padding:8px 15px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* LUXURY TEXT */
+.luxury{
+  text-align:center;
+  max-width:700px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+footer p{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{
+    padding:20px;
+  }
+  section{
+    padding:80px 20px;
+  }
+  .hero h1{
+    font-size:36px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <h1>GemssAura</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="earrings.html">Earrings</a>
-      <a href="bracelets.html">Bracelets</a>
-    </nav>
-  </header>
 
-  <!-- Quote Section -->
-  <section class="quote">
-    <p>“It's The Signature Of Your Unique Style. ” ✨</p>
-  </section>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">GemssAura Necklaces
 
-  <!-- Necklaces Grid -->
-  <section>
-    <h2 class="section-title">Our Necklace Collection</h2>
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71qbF5vt9IL._SY675_.jpg" alt="Necklace 1">
-        <h3>Chimes Chain Pendant</h3>
-        <a href="https://amzn.to/4gNBiPB" target="_blank" class="shop-btn">Shop Now</a>
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="necklaces.html" class="active">Earrings</a></li>
+    <li><a href="bracelets.html">Bracelets</a></li>
+    <li><a href="earrings.html">Earrings</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Timeless Necklace Collection</h1>
+    <p>Crafted to Define Elegance</p>
+    <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <h2 class="title fade">Our Signature Pieces</h2>
+  <div class="products">
+
+    <div class="product fade">
+      <img src="blob:https://gemini.google.com/e5680dc5-94f3-4368-80cc-1de0c77b956b">
+      <div class="product-info">
+        <h3>Royal Gold Pendant</h3>
+        <p class="price">₹9,999</p>
+        <button class="card-btn">View Details</button>
       </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71ciQsLSzRL._SY500_.jpg" alt="Necklace 2">
-        <h3>SALTY Anti Tarnish Clover Pendant</h3>
-        <a href="https://amzn.to/4pKZ0Qq" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/511+l9WGZFL._SY675_.jpg" alt="Necklace 3">
-        <h3>Rose Gold Pendant</h3>
-        <a href="https://amzn.to/485VJF8" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/518KOp16xLL._SY500_.jpg" alt="Necklace 4">
-        <h3>Bohemian Crystal</h3>
-        <a href="https://amzn.to/42yhp9b" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61iCa+7cZoL._SY500_.jpg" alt="Necklace 5">
-        <h3>Pearl Moon</h3>
-        <a href="https://amzn.to/3IT6qR6" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61yTJde3yTL._SY500_.jpg" alt="Necklace 6">
-        <h3>Ring Moon</h3>
-        <a href="https://amzn.to/46MynDo" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 7 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71dXz7fN97L._SY500_.jpg" alt="Necklace 7">
-        <h3>Infinity</h3>
-        <a href="https://amzn.to/4q3tnSn" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 8 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41ajpJXTDxL._SY500_.jpg" alt="Necklace 8">
-        <h3>Evil Eye</h3>
-        <a href="https://amzn.to/4haNVEy" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 9 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/617D1TKbllL._SY500_.jpg" alt="Necklace 9">
-        <h3>Heart</h3>
-        <a href="https://amzn.to/4mYijTA" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 10 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71ncIgpaVdL._SY500_.jpg" alt="Necklace 10">
-        <h3>Heart Clover</h3>
-        <a href="https://amzn.to/4n5cQdT" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 11 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/918pUzSnTnL._SY500_.jpg" alt="Necklace 11">
-        <h3>White Clover</h3>
-        <a href="https://amzn.to/4q4CKkx" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 12 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/91xAyI6yQuL._SY500_.jpg" alt="Necklace 12">
-        <h3>Black Clover</h3>
-        <a href="https://amzn.to/48qf83M" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 13 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71gZPYlkkjL._SY500_.jpg" alt="Necklace 13">
-        <h3>Salty PinkWhite</h3>
-        <a href="https://amzn.to/3L3LNSM" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 14 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/419hwahp4fL.jpg" alt="Necklace 14">
-        <h3>Three Layer</h3>
-        <a href="https://amzn.to/3J12yxh" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 15 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41re9U8O5ML.jpg" alt="Necklace 15">
-        <h3>Antique</h3>
-        <a href="https://amzn.to/4oe0bWP" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 16 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51BLrtmuaLL._SY395_.jpg" alt="Necklace 16">
-        <h3>Love Heart</h3>
-        <a href="https://amzn.to/4o7G6S6" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 17 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81+SQlhWaWL._SY695_.jpg" alt="Necklace 17">
-        <h3>X Pearl</h3>
-        <a href="https://amzn.to/3VZGLcw" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 18 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/7127lTxGzYL._SX500_.jpg" alt="Necklace 18">
-        <h3>Stylish stone</h3>
-        <a href="https://amzn.to/4qagENS" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 19 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61NervIGRhL._SY500_.jpg" alt="Necklace 19">
-        <h3> Round Solitaire</h3>
-        <a href="https://amzn.to/47ilgtz" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/710p63dqMNL._SY675_.jpg" alt="Necklace 20">
-        <h3>Austrian Crystal</h3>
-        <a href="https://amzn.to/4h1Y9XA" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 21 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61NjWPFfkWL._SY500_.jpg" alt="Necklace 21">
-        <h3>Heart Star Bohemian Crystal</h3>
-        <a href="https://amzn.to/42yZDmc" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-       <!-- Product 22 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71cO17JFDkL._SY500_.jpg" alt="Necklace 22">
-        <h3>Multilayer Crystal</h3>
-        <a href="https://amzn.to/48HV4tR" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-       <!-- Product 23 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/615GmHsTRLL._SY500_.jpg" alt="Necklace 23">
-        <h3>Shinning Heart</h3>
-        <a href="https://amzn.to/47kCoPm" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-       <!-- Product 24 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71pvozXJAbL._SY500_.jpg" alt="Necklace 24">
-        <h3>Charm Diva</h3>
-        <a href="https://amzn.to/48Xzph6" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 25 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61MIeRQUSkL._SY500_.jpg" alt="Necklace 21">
-        <h3>Dual Layer Charm</h3>
-        <a href="https://amzn.to/3KMSrNa" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 26 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71KbK70T5AL._SY675_.jpg" alt="Necklace 26">
-        <h3>Dangling Circle</h3>
-        <a href="https://amzn.to/48HWvsf" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 27 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51oOo2NlaZL._SY500_.jpg" alt="Necklace 27">
-        <h3>Rose Gold Pendant</h3>
-        <a href="https://amzn.to/4n121cP" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 28 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51623SGDt-L._SY575_.jpg" alt="Necklace 28">
-        <h3>Bow Hoop</h3>
-        <a href="https://amzn.to/4oBglKp" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 29 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71cdXLaxk6L._SY575_.jpg" alt="Necklace 29">
-        <h3>Heart Hoop</h3>
-        <a href="https://amzn.to/47yWp4S" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 30 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71XSVHq0s7L._SY575_.jpg" alt="Necklace 31">
-        <h3>Vintage Rose</h3>
-        <a href="https://amzn.to/4qfzrHn" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 31 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61pTklqxV8L._SY575_.jpg" alt="Necklace 31">
-        <h3>Black Stone</h3>
-        <a href="https://amzn.to/47h5FcN" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 32 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61wwgf6F4OL._SY575_.jpg" alt="Necklace 32">
-        <h3> Dainty Ribbon </h3>
-        <a href="https://amzn.to/3J8XFT8" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 33 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71v30iAijVL._SY500_.jpg" alt="Necklace 33">
-        <h3> Crystal Design 925 Sterling </h3>
-        <a href="https://amzn.to/4qqzRuS" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 34 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51sB64fmYSL._SY575_.jpg" alt="Necklace 34">
-        <h3> BowKnot </h3>
-        <a href="https://amzn.to/4qcwYwJ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 35 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61T-VV549ML._SY500_.jpg" alt="Necklace 35">
-        <h3>CZ Rose Gold</h3>
-        <a href="https://amzn.to/4qegTGH" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 36 price 1351-->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61yQx1IQGLL._SY500_.jpg" alt="Necklace 36">
-        <h3> Halo Pendant </h3>
-        <a href="https://amzn.to/4qjbUEJ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 37 price 1351-->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51wr0ibgy4L._SY500_.jpg" alt="Necklace 37">
-        <h3>Solitaire Halo  </h3>
-        <a href="https://amzn.to/3MJgqOr" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 38 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61daLmlFNSL._SY500_.jpg" alt="Necklace 38">
-        <h3> Pink Aesthetic </h3>
-        <a href="https://amzn.to/3N6jEeQ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71hOAfa3u0L._SY500_.jpg" alt="Necklace 39">
-        <h3> Solitaire </h3>
-        <a href="https://amzn.to/3Y3RsM5" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 3 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61ToqWwmbVL._SY500_.jpg" alt="Necklace 39">
-        <h3> Sterling </h3>
-        <a href="https://amzn.to/3YAgzGs" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/6111b8M0kuL._SY500_.jpg" alt="Necklace 39">
-        <h3> Blue Aesthetic </h3>
-        <a href="https://amzn.to/48L1Dvh" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61hzGPyzidL._SY500_.jpg" alt="Necklace 39">
-        <h3> ZAVYA 925</h3>
-        <a href="https://amzn.to/45dZ6Y0" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/7117kgQ8fPL._SY500_.jpg" alt="Necklace 39">
-        <h3> Sterling </h3>
-        <a href="https://amzn.to/491iEjB" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71SKw9zNBBL._SY500_.jpg" alt="Necklace 39">
-        <h3> White Aesthetic </h3>
-        <a href="https://amzn.to/3KSsoEQ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61hzGPyzidL._SY500_.jpg" alt="Necklace 39">
-        <h3> Necklace </h3>
-        <a href="https://amzn.to/45dZ6Y0" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81eMXCK1amL._SY500_.jpg" alt="Necklace 39">
-        <h3>ELEGANT BLACK  </h3>
-        <a href="https://amzn.to/4snqXiy" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81XU0FPxrkL._SY500_.jpg" alt="Necklace 39">
-        <h3> ELEGANT RED WINE</h3>
-        <a href="https://amzn.to/4jsw3WS" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81EhDGZAHiL._SY500_.jpg" alt="Necklace 39">
-        <h3>ELEGANT SHINE</h3>
-        <a href="https://amzn.to/4q2VBfv" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41azoCPhXjL._SY535_.jpg" alt="Necklace 39">
-        <h3> Trendy Bow Charm </h3>
-        <a href="https://amzn.to/49B8zLF" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <!-- <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61XGLlXj+kL._SY675_.jpg" alt="Necklace 39">
-        <h3> Necklace </h3>
-        <a href="https://amzn.to/45dZ6Y0" target="_blank" class="shop-btn">Shop Now</a>
-      </div> -->
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/510WgZgxD6L._SY500_.jpg" alt="Necklace 39">
-        <h3> OCEAN HEART </h3>
-        <a href="https://amzn.to/3YRBOUf" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/611lskkGoNL._SY500_.jpg" alt="Necklace 39">
-        <h3> Necklace </h3>
-        <a href="https://amzn.to/3KTVbsM" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61pYuU1u0TL._SY500_.jpg" alt="Necklace 39">
-        <h3> Trend </h3>
-        <a href="https://amzn.to/44N0GQI" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41pqgwAjXYL._SY500_.jpg" alt="Necklace 39">
-        <h3> Dolphin Pearl </h3>
-        <a href="https://amzn.to/4slRblt" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61rq5i8ZGqL._SY500_.jpg" alt="Necklace 39">
-        <h3> SHINE </h3>
-        <a href="https://amzn.to/4pk7xbG" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81gFpZ3bnXL._SY500_.jpg" alt="Necklace 39">
-        <h3> starfish pendant </h3>
-        <a href="https://amzn.to/3Ylh2wg" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51QmtXihbWL._SY500_.jpg" alt="Necklace 39">
-        <h3> 𝗦𝗽𝗮𝗿𝗸𝗹𝗶𝗻𝗴 𝗖𝗿𝘆𝘀𝘁𝗮𝗹</h3>
-        <a href="https://amzn.to/49hLpIN" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81vxM10bMOL._SY500_.jpg" alt="Necklace 39">
-        <h3> SeaShell </h3>
-        <a href="https://amzn.to/4pk83q8" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61V0quBENVL._SY500_.jpg" alt="Necklace 39">
-        <h3> OCEAN SHINE </h3>
-        <a href="https://amzn.to/4so5d60" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 39 p -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61aMMbwxzuL._SY500_.jpg" alt="Necklace 39">
-        <h3> PENDANT SET </h3>
-        <a href="https://amzn.to/44SKnBX" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      
-
-    
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 GemssAura. All Rights Reserved.</p>
-  </footer>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <div class="product-info">
+        <h3>Diamond Grace Necklace</h3>
+        <p class="price">₹14,999</p>
+        <button class="card-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
+      <div class="product-info">
+        <h3>Minimal Gold Chain</h3>
+        <p class="price">₹6,499</p>
+        <button class="card-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
+      <div class="product-info">
+        <h3>Elegant Pearl Necklace</h3>
+        <p class="price">₹11,299</p>
+        <button class="card-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
+      <div class="product-info">
+        <h3>Vintage Charm Necklace</h3>
+        <p class="price">₹8,899</p>
+        <button class="card-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+      <div class="product-info">
+        <h3>Luxury Diamond Line</h3>
+        <p class="price">₹18,499</p>
+        <button class="card-btn">View Details</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LUXURY TEXT -->
+<section>
+  <p class="luxury fade">
+    Each necklace is handcrafted with precision and timeless beauty. Designed to reflect elegance, our pieces elevate your presence with unmatched luxury.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2 class="logo">GemssAura</h2>
+  <p>Luxury Redefined ✨</p>
+  <p>© 2026 GemssAura. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+function scrollToProducts(){
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+// SCROLL ANIMATION
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
 </html>

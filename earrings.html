@@ -1,297 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GemssAura | Necklaces</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemssAura | Earrings</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#fdfaf6;
+  color:#222;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  font-style:italic;
+  color:#c6a65b;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:30px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#222;
+  position:relative;
+  font-weight:500;
+}
+
+nav ul li a.active{
+  color:#c6a65b;
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-5px;
+  left:0;
+  background:#c6a65b;
+  transition:0.4s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.25);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  animation:fadeIn 2s ease;
+}
+
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:50px;
+  font-style:italic;
+}
+
+.hero p{
+  margin:15px 0;
+  font-size:18px;
+}
+
+.btn{
+  padding:12px 30px;
+  border:none;
+  background:white;
+  color:#111;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* SECTION */
+section{
+  padding:100px 60px;
+}
+
+.title{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin-bottom:50px;
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.4s;
+  position:relative;
+}
+
+.product img{
+  width:100%;
+  transition:0.4s;
+}
+
+.product:hover img{
+  transform:scale(1.08);
+}
+
+.product:hover{
+  box-shadow:0 12px 30px rgba(198,166,91,0.25);
+}
+
+.product-info{
+  padding:15px;
+}
+
+.product h3{
+  font-size:18px;
+}
+
+.price{
+  color:#c6a65b;
+  font-weight:bold;
+  margin:5px 0;
+}
+
+.card-btn{
+  margin-top:10px;
+  padding:8px 15px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* STATEMENT */
+.statement{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.statement img{
+  width:100%;
+  max-width:450px;
+  border-radius:12px;
+}
+
+.statement-text{
+  max-width:500px;
+  font-size:18px;
+  line-height:1.6;
+}
+
+/* FEATURED */
+.featured{
+  text-align:center;
+}
+
+.featured img{
+  width:100%;
+  max-width:500px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(198,166,91,0.4);
+}
+
+.featured h2{
+  font-family:'Playfair Display', serif;
+  margin-top:20px;
+}
+
+.featured p{
+  max-width:600px;
+  margin:10px auto;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:20px;}
+  section{padding:80px 20px;}
+  .hero h1{font-size:34px;}
+}
+</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <h1>GemssAura</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="necklaces.html">Necklaces</a>
-      <a href="bracelets.html">Bracelets</a>
-    </nav>
-  </header>
 
-  <!-- Quote Section -->
-  <section class="quote">
-    <p>“Elegance That Whispers, Sparkle That Speaks.” ✨</p>
-  </section>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">GemssAura</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="necklaces.html">Necklaces</a></li>
+    <li><a href="bracelets.html">Bracelets</a></li>
+    <li><a href="earrings.html" class="active">Earrings</a></li>
+  </ul>
+</nav>
 
-  <!-- earrings Grid -->
-  <section>
-    <h2 class="section-title">Our Earings Collection</h2>
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71+wamZtUoL._SY675_.jpg" alt="earrings 1">
-        <h3>Karatcart Classic Half Hoop</h3>
-        <a href="https://amzn.to/3KKQ3q4" target="_blank" class="shop-btn">Shop Now</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Elegant Earrings Collection</h1>
+    <p>Where Grace Meets Brilliance</p>
+    <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <h2 class="title fade">Our Earrings</h2>
+  <div class="products">
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+      <div class="product-info">
+        <h3>Diamond Drop Earrings</h3>
+        <p class="price">₹7,999</p>
+        <button class="card-btn">Shop Now</button>
       </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71VcoF+tDML._SY500_.jpg" alt="earrings 2">
-        <h3>Black Salve Clover</h3>
-        <a href="https://amzn.to/42g3F2H" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61RADqer0ML._SY500_.jpg" alt="earring 3">
-        <h3>Crystal Pearl</h3>
-        <a href="https://amzn.to/4mA7fvJ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/716QM99dtJL._SY575_.jpg" alt="earring 4">
-        <h3>Blue Zircon</h3>
-        <a href="https://amzn.to/4hmVOXw" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61sgY-1WNIL._SY575_.jpg" alt="earring 5">
-        <h3>Stylish Earring</h3>
-        <a href="https://amzn.to/3JlsBj2" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51iUxKJPF-L._SY575_.jpg" alt="earring 6">
-        <h3>Delicate Bow</h3>
-        <a href="https://amzn.to/4o1Oovn" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 7 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51gvslF1VFL._SY575_.jpg" alt="earring 7">
-        <h3>Zircon Bali</h3>
-        <a href="https://amzn.to/43jW8QU" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 8 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51Grf6ri3GL._SY575_.jpg" alt="earring 8">
-        <h3>Charmiq Twisted</h3>
-        <a href="https://amzn.to/47xraXY" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 9 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51vYZGimMNL._SX575_.jpg" alt="earring 9">
-        <h3>Chunky Square</h3>
-        <a href="https://amzn.to/3WgrlRa" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 10 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51N2n1a4LhL._SY500_.jpg">
-        <h3>Stunning </h3>
-        <a href="https://amzn.to/49ai7NW" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 11 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71Z5U9-MEbL._SY575_.jpg" alt="earring 11">
-        <h3>Shining Hoop </h3>
-        <a href="https://amzn.to/3WSxHGs" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      <!-- Product 12 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71k6lMzRzzL._SY575_.jpg" alt="earring 12">
-        <h3>Bauble Heart</h3>
-        <a href="https://amzn.to/4hh3wlK" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 13 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/917VwYufRHL._SY575_.jpg" alt="earring 13">
-        <h3>Pearl Tassel</h3>
-        <a href="https://amzn.to/4oPJ4LF" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 14 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/718ulWkEFtL._SY575_.jpg" alt="earring 14">
-        <h3>Bow Hoop</h3>
-        <a href="https://amzn.to/4o4sYO6" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 15 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81FBsJpVKQL._SY575_.jpg" alt="earring 15">
-        <h3>White Slave Clover</h3>
-        <a href="https://amzn.to/4hrB5Sw" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 16 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61alLvru4JL._SY500_.jpg" alt="earring 16">
-        <h3>Natural Zircon</h3>
-        <a href="https://amzn.to/4qOqHIs" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 17 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51gvslF1VFL._SY500_.jpg" alt="earring 17">
-        <h3>Latest Fancy</h3>
-        <a href="https://amzn.to/47ICNdx" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 18 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51F0LLAa1hL._SY575_.jpg" alt="earring 18">
-        <h3>Austrian Cubic Zirconia </h3>
-        <a href="https://amzn.to/4iu7I2i" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 19 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51996Mn8m3L._SY500_.jpg" alt="earring 19">
-        <h3>Latest Western</h3>
-        <a href="https://amzn.to/4ilL0Ju" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 21 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61E1gUZ9djL._SY500_.jpg" alt="earring 19">
-        <h3>Latest Western</h3>
-        <a href="https://amzn.to/48l8j1r" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51T88DZxK8L._SY675_.jpg" alt="earring 20">
-        <h3>Rose Gold Plated </h3>
-        <a href="https://amzn.to/3Kp0YGl" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      
-
-      <!-- Product 21 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51ib643q0PL._SY500_.jpg" alt="earring 21">
-        <h3>GIVA 925</h3>
-        <a href="https://amzn.to/3Xyic77" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 22 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61z-+LPPvAL._SY500_.jpg" alt="earring 22">
-        <h3>Bali Earring</h3>
-        <a href="https://amzn.to/4qaHJQ8" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 23 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71jgYbUNL4L._SY500_.jpg" alt="earring 23">
-        <h3>Clip On Hoop</h3>
-        <a href="https://amzn.to/499YS6A" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 24 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/91qebdBJDBL._SY500_.jpg" alt="earring 24">
-        <h3>Jyoth Stud</h3>
-        <a href="https://amzn.to/48VUbfv" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/414P8k7JJ+L._SY500_.jpg" alt="earring 20">
-        <h3>Plated Hoop</h3>
-        <a href="https://amzn.to/4pDsNtQ" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71Sgc4X9VeL._SY500_.jpg" alt="earring 20">
-        <h3>Fancy Earing</h3>
-        <a href="https://amzn.to/3KueUPx" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71d5RWJM7CL._SY500_.jpg" alt="earring 20">
-        <h3>Pearl Gold</h3>
-        <a href="https://amzn.to/4qkgXoA" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61yv7V3dXFL._SY625_.jpg" alt="earring 20">
-        <h3>Heart Drop</h3>
-        <a href="https://amzn.to/4jm78nN" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61dI2WFYfXL._SY575_.jpg" alt="earring 20">
-        <h3>Elegant Drop-Style</h3>
-        <a href="https://amzn.to/44MXB36" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61OjlfXU77L._SY575_.jpg" alt="earring 20">
-        <h3> Dangle Hoop </h3>
-        <a href="https://amzn.to/3LhXxS7" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71R+1rEpC5L._SY625_.jpg" alt="earring 20">
-        <h3>Crystal Bloom</h3>
-        <a href="https://amzn.to/4sC8cbo" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61vKH1VwU7L._SY500_.jpg" alt="earring 20">
-        <h3>Stud Earring</h3>
-        <a href="https://amzn.to/4qlZpZH" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51XsuuUSuQL._SY500_.jpg" alt="earring 20">
-        <h3>Elegant Pearl </h3>
-        <a href="https://amzn.to/49kz46X" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61VX+D7ejEL._SY500_.jpg" alt="earring 20">
-        <h3>BOLD Dangle</h3>
-        <a href="https://amzn.to/45o48RS" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71ZmR2+8RwL._SY575_.jpg" alt="earring 20">
-        <h3>Elegant Chimes</h3>
-        <a href="https://amzn.to/3Yi90UX" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-
-      
-
-      
-
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 GemssAura. All Rights Reserved.</p>
-  </footer>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038260942-2e0c2eec2a3f">
+      <div class="product-info">
+        <h3>Golden Hoop Elegance</h3>
+        <p class="price">₹4,499</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
+      <div class="product-info">
+        <h3>Pearl Drop Earrings</h3>
+        <p class="price">₹6,299</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
+      <div class="product-info">
+        <h3>Minimal Gold Studs</h3>
+        <p class="price">₹2,999</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401">
+      <div class="product-info">
+        <h3>Crystal Shine Drops</h3>
+        <p class="price">₹5,799</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <div class="product-info">
+        <h3>Luxury Diamond Studs</h3>
+        <p class="price">₹9,999</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section>
+  <div class="statement fade">
+    <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+    <div class="statement-text">
+      Each piece is designed to capture light, elegance, and timeless beauty — enhancing your presence with a subtle yet powerful glow.
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured fade">
+  <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+  <h2>Signature Earrings</h2>
+  <p>
+    Our signature earrings blend brilliance and grace, crafted to shine effortlessly with every movement.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2 class="logo">GemssAura</h2>
+  <p>Luxury Redefined ✨</p>
+  <p>© 2026 GemssAura. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+function scrollToProducts(){
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
 </html>

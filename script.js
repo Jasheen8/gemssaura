@@ -21,3 +21,27 @@ const revealCards = () => {
 };
 window.addEventListener('scroll', revealCards);
 revealCards();
+
+function goTo(page){
+  window.location.href = page;
+}
+
+/* simple animation */
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".card").forEach(el => {
+    let pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight){
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
+    }
+  });
+});
+
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector("nav");
+  if(window.scrollY > 50){
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});

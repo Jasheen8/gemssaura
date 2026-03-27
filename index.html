@@ -1,65 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="p:domain_verify" content="6811b8875c1cfcb40e94e53aa0a475d8"/>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gemss Aura - Luxury Jewelry</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemssAura</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#faf9f6;
+  color:#222;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  font-style:italic;
+  color:#c6a65b;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:30px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#222;
+  position:relative;
+  font-weight:500;
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-5px;
+  left:0;
+  background:#c6a65b;
+  transition:0.4s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1617038220319-276d3cfab638') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+
+.hero h1{
+  font-size:50px;
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  letter-spacing:2px;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+}
+
+/* SECTION */
+section{
+  padding:100px 60px;
+}
+
+.title{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin-bottom:40px;
+  color:#222;
+}
+
+/* COLLECTION GRID */
+.collection{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  text-align:center;
+  border-radius:12px;
+  transition:0.4s;
+  cursor:pointer;
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 10px 25px rgba(198,166,91,0.3);
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.product{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.product img{
+  width:100%;
+  transition:0.4s;
+}
+
+.product:hover img{
+  transform:scale(1.1);
+}
+
+.product h3{
+  margin-top:10px;
+}
+
+.price{
+  color:#c6a65b;
+  font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+footer p{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{
+    padding:20px;
+  }
+  section{
+    padding:80px 20px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Gemss Aura</h1>
-    <nav>
-      <a href="necklaces.html">Necklaces</a>
-      <a href="earrings.html">Earrings</a>
-      <a href="bracelets.html">Bracelets</a>
-    </nav>
-  </header>
 
-  <!-- Hero Banner -->
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Luxury That Defines You</h2>
-      <p>Curated jewelry with timeless elegance, crafted for your aura ✨</p>
-      <a href="#collections" class="cta-btn">ScrollDown & Explore</a>
-    </div>
-  </section>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">GemssAura</div>
+  <ul>
+    <li><a href="necklaces.html">Necklaces</a></li>
+    <li><a href="bracelets. html">Bracelets</a></li>
+    <li><a href="earrings.html">Earrings</a></li>
+  </ul>
+</nav>
 
-  <section class="container">
-  <h2 class="section-title">Our Collections</h2>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <h1>Elegance in Every Sparkle</h1>
+    <p>Crafted to perfection, designed to shine</p>
+  </div>
+</section>
 
-  <div class="grid">
-    <div class="card">
-      <img src="https://m.media-amazon.com/images/I/619wU+aGxML._AC_UY500_.jpg" alt="Necklaces">
+<!-- INTRO -->
+<section>
+  <h2 class="title fade">Our Craftsmanship</h2>
+  <p class="fade" style="text-align:center; max-width:700px; margin:auto;">
+    At GemssAura, we believe jewellery is more than an accessory — it is an expression of elegance, identity, and timeless beauty.
+  </p>
+</section>
+
+<!-- COLLECTION -->
+<section>
+  <h2 class="title fade">Our Collection</h2>
+  <div class="collection">
+    <div class="card fade" onclick="scrollToSection('necklaces')">
+      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
       <h3>Necklaces</h3>
-      <a href="necklaces.html" class="explore-btn">Explore</a>
     </div>
 
-    <div class="card">
-      <img src="https://i.pinimg.com/736x/69/d1/c8/69d1c8d30866aa242cc674ecf7aaf75e.jpg" alt="Earrings">
-      <h3>Earrings</h3>
-      <a href="earrings.html" class="explore-btn">Explore</a>
-    </div>
-
-    <div class="card">
-      <img src="https://i.pinimg.com/1200x/ad/66/c7/ad66c720b776890686d217fff758bcc5.jpg" alt="Bracelets">
+    <div class="card fade" onclick="scrollToSection('bracelets')">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
       <h3>Bracelets</h3>
-      <a href="bracelets.html" class="explore-btn">Explore</a>
+    </div>
+
+    <div class="card fade" onclick="scrollToSection('earrings')">
+      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
+      <h3>Earrings</h3>
     </div>
   </div>
 </section>
 
+<!-- NECKLACES -->
+<section id="necklaces">
+  <h2 class="title fade">Necklaces</h2>
+  <div class="products">
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <h3>Diamond Necklace</h3>
+      <p class="price">₹12,999</p>
+    </div>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401">
+      <h3>Gold Chain</h3>
+      <p class="price">₹8,499</p>
+    </div>
+  </div>
+</section>
 
+<!-- BRACELETS -->
+<section id="bracelets">
+  <h2 class="title fade">Bracelets</h2>
+  <div class="products">
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1589987607627-1e0c0e4b0c61">
+      <h3>Luxury Bracelet</h3>
+      <p class="price">₹5,999</p>
+    </div>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1602752250015-52934bc45613">
+      <h3>Minimal Bracelet</h3>
+      <p class="price">₹3,499</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Gemss Aura | Luxury Jewelry with Love ✨</p>
-  </footer>
+<!-- EARRINGS -->
+<section id="earrings">
+  <h2 class="title fade">Earrings</h2>
+  <div class="products">
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+      <h3>Diamond Earrings</h3>
+      <p class="price">₹6,999</p>
+    </div>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038260942-2e0c2eec2a3f">
+      <h3>Gold Earrings</h3>
+      <p class="price">₹4,299</p>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- FOOTER -->
+<footer>
+  <h2 class="logo">GemssAura</h2>
+  <p>Luxury Redefined ✨</p>
+  <p>© 2026 GemssAura. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+// Scroll Navigation
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// Fade Animation
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect().top;
+    if(rect < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
-

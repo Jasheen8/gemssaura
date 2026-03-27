@@ -1,203 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GemssAura | Necklaces</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GemssAura | Bracelets</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#f9f8f4;
+  color:#222;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  font-style:italic;
+  color:#c6a65b;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:30px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#222;
+  position:relative;
+  font-weight:500;
+}
+
+nav ul li a.active{
+  color:#c6a65b;
+}
+
+nav ul li a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-5px;
+  left:0;
+  background:#c6a65b;
+  transition:0.4s;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.openai.com/static-rsc-4/6hgDuRdbjUsG9lstX8MwyJu7-ZMCj28OEOVxelh7rittsoUxmMA-2qfS9O-2-CIZbXnr-huSyn0uucAOnjHbJQbB7VlDfSo1ey9nySvdHUabxEWtoUXkNdKLbUGJLQjXb2Y_kL3Pomd8zx7IJlDtoD9Rqd01Dw69D7G-Iq6GDzsKYX3SUwmc4LFIahNdbUaN?purpose=fullsize') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  animation:fadeIn 2s ease;
+}
+
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:52px;
+  font-style:italic;
+}
+
+.hero p{
+  margin:15px 0;
+  font-size:18px;
+}
+
+.btn{
+  padding:12px 30px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* SECTION */
+section{
+  padding:100px 60px;
+}
+
+.title{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin-bottom:50px;
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.4s;
+  border:1px solid transparent;
+}
+
+.product img{
+  width:100%;
+  transition:0.4s;
+}
+
+.product:hover img{
+  transform:scale(1.1);
+}
+
+.product:hover{
+  border:1px solid #c6a65b;
+  box-shadow:0 10px 25px rgba(198,166,91,0.3);
+}
+
+.product-info{
+  padding:15px;
+}
+
+.product h3{
+  font-size:18px;
+}
+
+.price{
+  color:#c6a65b;
+  font-weight:bold;
+  margin:5px 0;
+}
+
+.card-btn{
+  margin-top:10px;
+  padding:8px 15px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-btn:hover{
+  background:#c6a65b;
+  color:black;
+}
+
+/* FEATURED */
+.featured{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.featured img{
+  width:100%;
+  max-width:500px;
+  border-radius:12px;
+}
+
+.feature-text{
+  max-width:500px;
+}
+
+.feature-text h2{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.feature-text p{
+  line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* ANIMATIONS */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:20px;}
+  section{padding:80px 20px;}
+  .hero h1{font-size:36px;}
+}
+</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <h1>GemssAura</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="necklaces.html">Necklaces</a>
-      <a href="earrings.html">Earrings</a>
-      
-    </nav>
-  </header>
 
-  <!-- Quote Section -->
-  <section class="quote">
-    <p>“ Let Your Wrist Do The Talking ” ✨</p>
-  </section>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">GemssAura</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="necklaces.html">Necklaces</a></li>
+    <li><a href="bracelets.html" class="active">Bracelets</a></li>
+    <li><a href="earrings.html">Earrings</a></li>
+  </ul>
+</nav>
 
-  <!-- Necklaces Grid -->
-  <section>
-    <h2 class="section-title">Our Bracelets Collection</h2>
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="https://i.pinimg.com/736x/d1/f8/b1/d1f8b1d9a48680bb176376f6cbfabded.jpg" alt="bracelet 1">
-        <h3>Stylish Adjustable Bracelet</h3>
-        <a href="https://amzn.to/48azkXf" target="_blank" class="shop-btn">Shop Now</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Luxury Bracelet Collection</h1>
+    <p>Designed for Grace, Crafted for Power</p>
+    <button class="btn" onclick="scrollToProducts()">Explore Collection</button>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <h2 class="title fade">Our Bracelets</h2>
+  <div class="products">
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1602752250015-52934bc45613">
+      <div class="product-info">
+        <h3>Golden Charm Bracelet</h3>
+        <p class="price">₹5,999</p>
+        <button class="card-btn">Shop Now</button>
       </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41TcYOSxzPL._SY500_.jpg" alt="bracelet 2">
-        <h3>Clover Bracelet</h3>
-        <a href="https://amzn.to/3KIvwT6" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61qmaHJMaQL._SY675_.jpg" alt="bracelet 3">
-        <h3> Multi Strand Arm Cuff Armlet</h3>
-        <a href="https://amzn.to/4nwlqUa" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 4   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61x1Naz01eL._SY500_.jpg" alt="bracelet 4">
-        <h3> Infinite Twisted Shining Diva</h3>
-        <a href="https://amzn.to/4mYyjoG" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 5  -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61rXO-t4dBL._SY500_.jpg" alt="bracelet 5">
-        <h3> Twisted Gold Plated</h3>
-        <a href="https://amzn.to/4oau22z" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      <!-- Product 6   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41g2YxgKN8L._SY500_.jpg" alt="bracelet 6">
-        <h3> Infinite Twisted Shining Diva</h3>
-        <a href="https://amzn.to/4obNImI" target="_blank" class="shop-btn">Shop Now</a>
-      </div><!-- Product 7   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51qjMs6t3BL._SY500_.jpg" alt="bracelet 7">
-        <h3> Shining Diva Fashion</h3>
-        <a href="https://amzn.to/4oa5KFI" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      
-      <!-- Product 8   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71s2C2QZvKL._SY500_.jpg" alt="bracelet 8">
-        <h3> Infinite Twisted Shining Diva</h3>
-        <a href="https://amzn.to/3KIgEo4" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 9   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81fARt2rmuL._SY500_.jpg" alt="bracelet 9">
-        <h3> Wave Designer White Crystals</h3>
-        <a href="https://amzn.to/48nSOHW" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 10   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/81Vt38bRRyL._SY500_.jpg" alt="bracelet 10">
-        <h3> Estele Fancy Designer</h3>
-        <a href="https://amzn.to/46HvymY" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 11   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71JrpEoWqpL._SY500_.jpg" alt="bracelet 11">
-        <h3> Nail Cubic Zirconia Studded</h3>
-        <a href="https://amzn.to/4nFhss9" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 12   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61+qj8DszwL._SY500_.jpg" alt="bracelet 12">
-        <h3> Aesthetic SALVE Classic</h3>
-        <a href="https://amzn.to/436voDd" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 13   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/414+PVesl4L._SY500_.jpg" alt="bracelet 13">
-        <h3> Stylish Cuff Bangle </h3>
-        <a href="https://amzn.to/4q1ZmSX" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 14   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61um-SwOYKL._SY500_.jpg" alt="bracelet 14">
-        <h3> Italian cubic zirconia diamond</h3>
-        <a href="https://amzn.to/3L28dUs" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 15   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/41Yx4+BwNaL._SY500_.jpg" alt="bracelet 15">
-        <h3> Endless Love Crystal Infinity</h3>
-        <a href="https://amzn.to/4nISpof" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 16   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51Plpx2sg6L._SY575_.jpg" alt="bracelet 16">
-        <h3> Rose Openable Crystal </h3>
-        <a href="https://amzn.to/4o6fIIT" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 17   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61um-SwOYKL._SY575_.jpg" alt="bracelet 17">
-        <h3> Gold Openable Crystal </h3>
-        <a href="https://amzn.to/4o0MdIa" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 18   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/6192gi2yCbL._SY575_.jpg" alt="bracelet 18">
-        <h3>  Bangle Style </h3>
-        <a href="https://amzn.to/4qlTMeh" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 19   -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71gGkwyLYqL._SY575_.jpg" alt="bracelet 19">
-        <h3> 2 Rose Gold </h3>
-        <a href="https://amzn.to/3L9MY3b" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 20 Price 2099  -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/61siq267BJL._SY575_.jpg" alt="bracelet 20">
-        <h3> BIS Hallmarked  </h3>
-        <a href="https://amzn.to/3JgA9nc" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 21 Price 21  -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/71yys3TeqmL._SY500_.jpg" alt="bracelet 21">
-        <h3> Diamond Adjustable Bracele  </h3>
-        <a href="https://amzn.to/4iAfM1r" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-      <!-- Product 22 Price 21  -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/612Pbo1-ANL._SY675_.jpg" alt="bracelet 22">
-        <h3> Dazzling Baguette  </h3>
-        <a href="https://amzn.to/3KFwdgm" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-      
-
-      <!-- Product 22 Price 21  -->
-      <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/51dNOAxP1dL._SY625_.jpg" alt="bracelet 22">
-        <h3> LISH Heart </h3>
-        <a href="https://amzn.to/4smYXvt" target="_blank" class="shop-btn">Shop Now</a>
-      </div>
-
-
-
-
-
-      
-
-      <!-- Add more as needed -->
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 GemssAura. All Rights Reserved.</p>
-  </footer>
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1589987607627-1e0c0e4b0c61">
+      <div class="product-info">
+        <h3>Diamond Luxe Bracelet</h3>
+        <p class="price">₹9,499</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
+      <div class="product-info">
+        <h3>Minimal Gold Band</h3>
+        <p class="price">₹3,999</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
+      <div class="product-info">
+        <h3>Vintage Royal Bracelet</h3>
+        <p class="price">₹7,999</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+      <div class="product-info">
+        <h3>Crystal Elegance Band</h3>
+        <p class="price">₹6,499</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="product fade">
+      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
+      <div class="product-info">
+        <h3>Luxury Diamond Chain</h3>
+        <p class="price">₹12,999</p>
+        <button class="card-btn">Shop Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section>
+  <div class="featured fade">
+    <img src="https://images.unsplash.com/photo-1602752250015-52934bc45613">
+    <div class="feature-text">
+      <h2>Signature Piece</h2>
+      <p>
+        Our signature bracelet embodies elegance and power. Crafted with precision and adorned with timeless detailing, it is designed to elevate every moment with refined luxury.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h2 class="logo">GemssAura</h2>
+  <p>Luxury Redefined ✨</p>
+  <p>© 2026 GemssAura. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+function scrollToProducts(){
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
 </body>
+</html>
