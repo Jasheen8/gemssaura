@@ -8,220 +8,8 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
+<link rel="stylesheet" href="style.css">
 
-body{
-  font-family:'Poppins', sans-serif;
-  background:#faf9f6;
-  color:#222;
-}
-
-/* NAVBAR */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 60px;
-  background:white;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
-  z-index:1000;
-}
-
-.logo{
-  font-family:'Playfair Display', serif;
-  font-size:28px;
-  font-style:italic;
-  color:#c6a65b;
-}
-
-nav ul{
-  display:flex;
-  list-style:none;
-  gap:30px;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#222;
-  position:relative;
-  font-weight:500;
-}
-
-nav ul li a::after{
-  content:"";
-  position:absolute;
-  width:0%;
-  height:2px;
-  bottom:-5px;
-  left:0;
-  background:#c6a65b;
-  transition:0.4s;
-}
-
-nav ul li a:hover::after{
-  width:100%;
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-}
-
-.hero h1{
-  font-family:'Playfair Display', serif;
-  font-size:52px;
-  font-style:italic;
-}
-
-.hero p{
-  margin:15px 0;
-  font-size:18px;
-}
-
-.btn{
-  padding:12px 30px;
-  border:none;
-  background:#111;
-  color:white;
-  cursor:pointer;
-  transition:0.4s;
-}
-
-.btn:hover{
-  background:#c6a65b;
-  color:black;
-}
-
-/* SECTION */
-section{
-  padding:100px 60px;
-}
-
-.title{
-  text-align:center;
-  font-family:'Playfair Display', serif;
-  font-size:36px;
-  margin-bottom:50px;
-}
-
-/* PRODUCTS GRID */
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-
-.product{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  transition:0.4s;
-  position:relative;
-}
-
-.product img{
-  width:100%;
-  transition:0.4s;
-}
-
-.product:hover img{
-  transform:scale(1.1);
-}
-
-.product:hover{
-  box-shadow:0 15px 30px rgba(198,166,91,0.3);
-}
-
-.product-info{
-  padding:15px;
-}
-
-.product h3{
-  font-size:18px;
-}
-
-.price{
-  color:#c6a65b;
-  font-weight:bold;
-  margin:5px 0;
-}
-
-.card-btn{
-  margin-top:10px;
-  padding:8px 15px;
-  border:none;
-  background:#111;
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.card-btn:hover{
-  background:#c6a65b;
-  color:black;
-}
-
-/* LUXURY TEXT */
-.luxury{
-  text-align:center;
-  max-width:700px;
-  margin:auto;
-  font-size:18px;
-  line-height:1.7;
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:30px;
-}
-
-footer p{
-  margin-top:10px;
-  font-size:14px;
-}
-
-/* ANIMATION */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{
-    padding:20px;
-  }
-  section{
-    padding:80px 20px;
-  }
-  .hero h1{
-    font-size:36px;
-  }
-}
-</style>
 </head>
 
 <body>
@@ -233,14 +21,14 @@ footer p{
   </div>
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="necklaces.html" class="active">Earrings</a></li>
+    <li><a href="necklaces.html" class="active">Necklacess</a></li>
     <li><a href="bracelets.html">Bracelets</a></li>
     <li><a href="earrings.html">Earrings</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" style="background:url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f') center/cover no-repeat;">
   <div>
     <h1>Timeless Necklace Collection</h1>
     <p>Crafted to Define Elegance</p>
@@ -254,56 +42,26 @@ footer p{
   <div class="products">
 
     <div class="product fade">
-      <img src="blob:https://gemini.google.com/e5680dc5-94f3-4368-80cc-1de0c77b956b">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\e5680dc5-94f3-4368-80cc-1de0c77b956b.jfif">
       <div class="product-info">
         <h3>Royal Gold Pendant</h3>
-        <p class="price">₹9,999</p>
-        <button class="card-btn">View Details</button>
+        <a href="https://amzn.to/3Pu3LjT" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 
     <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\61bb7e32-7456-481f-b951-a2334588a131.jfif">
       <div class="product-info">
-        <h3>Diamond Grace Necklace</h3>
-        <p class="price">₹14,999</p>
-        <button class="card-btn">View Details</button>
+        <h3>Pearl studded Pendant</h3>
+        <a href="https://amzn.to/4szwwKt" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 
     <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\a10cf979-a10c-4572-827c-6de67489f590.jfif">
       <div class="product-info">
-        <h3>Minimal Gold Chain</h3>
-        <p class="price">₹6,499</p>
-        <button class="card-btn">View Details</button>
-      </div>
-    </div>
-
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
-      <div class="product-info">
-        <h3>Elegant Pearl Necklace</h3>
-        <p class="price">₹11,299</p>
-        <button class="card-btn">View Details</button>
-      </div>
-    </div>
-
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
-      <div class="product-info">
-        <h3>Vintage Charm Necklace</h3>
-        <p class="price">₹8,899</p>
-        <button class="card-btn">View Details</button>
-      </div>
-    </div>
-
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
-      <div class="product-info">
-        <h3>Luxury Diamond Line</h3>
-        <p class="price">₹18,499</p>
-        <button class="card-btn">View Details</button>
+        <h3>Spring Ring Pendant</h3>
+        <a href="https://amzn.to/4v2Z8O0" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 

@@ -8,266 +8,7 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:'Poppins', sans-serif;
-  background:#fdfaf6;
-  color:#222;
-}
-
-/* NAVBAR */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 60px;
-  background:white;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
-  z-index:1000;
-}
-
-.logo{
-  font-family:'Playfair Display', serif;
-  font-size:28px;
-  font-style:italic;
-  color:#c6a65b;
-}
-
-nav ul{
-  display:flex;
-  list-style:none;
-  gap:30px;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#222;
-  position:relative;
-  font-weight:500;
-}
-
-nav ul li a.active{
-  color:#c6a65b;
-}
-
-nav ul li a::after{
-  content:"";
-  position:absolute;
-  width:0%;
-  height:2px;
-  bottom:-5px;
-  left:0;
-  background:#c6a65b;
-  transition:0.4s;
-}
-
-nav ul li a:hover::after{
-  width:100%;
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  position:relative;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.25);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  animation:fadeIn 2s ease;
-}
-
-.hero h1{
-  font-family:'Playfair Display', serif;
-  font-size:50px;
-  font-style:italic;
-}
-
-.hero p{
-  margin:15px 0;
-  font-size:18px;
-}
-
-.btn{
-  padding:12px 30px;
-  border:none;
-  background:white;
-  color:#111;
-  cursor:pointer;
-  transition:0.4s;
-}
-
-.btn:hover{
-  background:#c6a65b;
-  color:black;
-}
-
-/* SECTION */
-section{
-  padding:100px 60px;
-}
-
-.title{
-  text-align:center;
-  font-family:'Playfair Display', serif;
-  font-size:36px;
-  margin-bottom:50px;
-}
-
-/* PRODUCTS */
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-
-.product{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  transition:0.4s;
-  position:relative;
-}
-
-.product img{
-  width:100%;
-  transition:0.4s;
-}
-
-.product:hover img{
-  transform:scale(1.08);
-}
-
-.product:hover{
-  box-shadow:0 12px 30px rgba(198,166,91,0.25);
-}
-
-.product-info{
-  padding:15px;
-}
-
-.product h3{
-  font-size:18px;
-}
-
-.price{
-  color:#c6a65b;
-  font-weight:bold;
-  margin:5px 0;
-}
-
-.card-btn{
-  margin-top:10px;
-  padding:8px 15px;
-  border:none;
-  background:#111;
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.card-btn:hover{
-  background:#c6a65b;
-  color:black;
-}
-
-/* STATEMENT */
-.statement{
-  display:flex;
-  align-items:center;
-  gap:50px;
-  flex-wrap:wrap;
-}
-
-.statement img{
-  width:100%;
-  max-width:450px;
-  border-radius:12px;
-}
-
-.statement-text{
-  max-width:500px;
-  font-size:18px;
-  line-height:1.6;
-}
-
-/* FEATURED */
-.featured{
-  text-align:center;
-}
-
-.featured img{
-  width:100%;
-  max-width:500px;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(198,166,91,0.4);
-}
-
-.featured h2{
-  font-family:'Playfair Display', serif;
-  margin-top:20px;
-}
-
-.featured p{
-  max-width:600px;
-  margin:10px auto;
-}
-
-/* FOOTER */
-footer{
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:30px;
-}
-
-/* ANIMATION */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:20px;}
-  section{padding:80px 20px;}
-  .hero h1{font-size:34px;}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -284,7 +25,7 @@ footer{
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" style="background:url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338') center/cover no-repeat;">
   <div class="hero-content">
     <h1>Elegant Earrings Collection</h1>
     <p>Where Grace Meets Brilliance</p>
@@ -298,58 +39,30 @@ footer{
   <div class="products">
 
     <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1588444650700-9c8e46b06e33">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\adba6836-4f20-46ea-8a9e-8672c867691e.jfif">
       <div class="product-info">
-        <h3>Diamond Drop Earrings</h3>
-        <p class="price">₹7,999</p>
-        <button class="card-btn">Shop Now</button>
+        <h3>Blooming Flower Stud Earrings</h3>
+        <a href="https://amzn.to/4bEss5E" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 
     <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1617038260942-2e0c2eec2a3f">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\21ae7b6c-c864-49c4-ad4a-6a67fdf52b0a.jfif">
       <div class="product-info">
-        <h3>Golden Hoop Elegance</h3>
-        <p class="price">₹4,499</p>
-        <button class="card-btn">Shop Now</button>
+        <h3>Flower Blossom Studs Earrings</h3>
+        <a href="https://amzn.to/4s5UOdY" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 
     <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a7f0d">
+      <img src="C:\Users\GCS\OneDrive\Gambar\amazon necklace\convert\e674df65-15ac-4535-b081-b1650a8c38d8.jfif">
       <div class="product-info">
-        <h3>Pearl Drop Earrings</h3>
-        <p class="price">₹6,299</p>
-        <button class="card-btn">Shop Now</button>
+        <h3>Starry Night Studs  Earrings</h3>
+        <a href="https://amzn.to/4diB3wc" target="_blank" class="card-btn">Shop Now</a>
       </div>
     </div>
 
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed">
-      <div class="product-info">
-        <h3>Minimal Gold Studs</h3>
-        <p class="price">₹2,999</p>
-        <button class="card-btn">Shop Now</button>
-      </div>
-    </div>
-
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401">
-      <div class="product-info">
-        <h3>Crystal Shine Drops</h3>
-        <p class="price">₹5,799</p>
-        <button class="card-btn">Shop Now</button>
-      </div>
-    </div>
-
-    <div class="product fade">
-      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-      <div class="product-info">
-        <h3>Luxury Diamond Studs</h3>
-        <p class="price">₹9,999</p>
-        <button class="card-btn">Shop Now</button>
-      </div>
-    </div>
+    
 
   </div>
 </section>
